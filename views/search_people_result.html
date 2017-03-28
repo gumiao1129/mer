@@ -1,0 +1,24 @@
+<script type="text/javascript" src="[var.base_url]/lib/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="[var.base_url]/lib/javascripts/thickbox-compressed.js"></script>
+<style type="text/css" media="all">@import "[var.base_url]/lib/css/thickbox.css";</style>
+<div class="search_result">
+        <div class="details">
+            <ul>
+                <li>
+                    <div class="image">
+                        <a href="[var.base_url]/screeningtools.php?st_req=[activity.screeningtool_name_md5]"><img class="image" src="[var.base_url]/[activity.thumbnail_pic_name;block=li;ondata=m_event_activity]"  border ="1" alt="[activity.screeningtools]" /></a>                  
+                    </div>
+                    <div class="fullname">
+                       <h4><a href="[var.base_url]/screeningtools.php?st_req=[activity.screeningtool_name_md5]">[activity.firstname] [activity.lastname]</a></h4>
+                    </div>
+                    <div class="specialty">
+                       Specialty: <a href="lookfor.php?search_key=[activity.specialty]&search_physicians=true">[activity.specialty]</a>
+                    </div>  
+              
+                    [activity.level; htmlconv=no]
+               
+                     <!--[onshow.error_id;if [val]=0;then 'no error';else 'error found'] -->
+                </li>
+             </ul>
+        </div>
+</div>

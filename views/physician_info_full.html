@@ -1,0 +1,112 @@
+<script type="text/javascript" src="[var.base_url]/lib/javascripts/jquery.min.js"></script>
+
+<table cellspacing="0" width="580px"><tbody>
+
+<tr>
+<td colspan="2">
+<fieldset class="pieform-fieldset">
+    <legend><h3>About Dr. [var.detail_result.firstname;ope=max:8] [var.detail_result.lastname;ope=max:8]</h3></legend><table><tbody>
+                    <tr id="profileform_aboutdescription_container" class="html">
+                    <th><div id="profileicon"><img src="[var.detail_result.thumbnail_pic_name]" alt=""/></div></th>
+            </tr>
+                    <tr id="profileform_firstname_container" class="required text">
+                    <th><label for="profileform_firstname">First Name:</label> <span class="requiredmarker"></span></th>
+                    <td><label for="profileform_firstname">[var.detail_result.firstname]</label> <span class="requiredmarker"></span></td>
+            </tr>
+            </tr>
+                    <tr id="profileform_middlename_container" class="required text">
+                    <th><label for="profileform_middlename">Middle Name:</label> <span class="requiredmarker"></span></th>
+                    <td><label for="profileform_middlename">[var.detail_result.middlename]</label> <span class="requiredmarker"></span></td>
+            </tr>
+                    <tr id="profileform_lastname_container" class="required text">
+                    <th><label for="profileform_lastname">Last Name:</label> <span class="requiredmarker"></span></th>
+                    <td><label for="profileform_lastname">[var.detail_result.lastname]</label> <span class="requiredmarker"></span></td>
+            </tr>
+                    <tr id="profileform_specialty_container" class="required text">
+                    <th><label for="profileform_specialty">Specialty:</label> <span class="requiredmarker"></span></th>
+                    <td><label for="profileform_specialty">[var.detail_result.specialty]</label> <span class="requiredmarker"></span></td>
+            </tr>
+                    <tr id="profileform_dob_container" class="required text">
+                    <th><label for="profileform_dob">[var.lang_date_birth]:</label> <span class="requiredmarker"></span></th>
+
+                    <td>               
+                        <div class="dob_edit">
+                           <label for="profileform_dob">[var.detail_result.dob]</label> <span class="requiredmarker"></span>
+                        </div>                    
+                    </td>
+            </tr>
+            <tr>
+                    <th><label for="profileform_gender">[var.lang_gender]:</label> <span class="requiredmarker"></span></th>
+                    <td>
+                        <label for="profileform_gender">[var.detail_result.sex]</label> <span class="requiredmarker"></span>
+                    </td>
+            </tr>
+            <tr id="profileform_introduction_container" class="wysiwyg">
+                    <th><label for="profileform_introduction">Introduction:</label></th>
+                    <td><label for="profileform_introduction">[var.detail_result.introduction]</label> <span class="requiredmarker"></span></td>
+            </tr>
+    </tbody>
+    </table></fieldset>
+</td>
+
+	</tr>	<tr>
+		<td colspan="2">
+<fieldset class="pieform-fieldset collapsed">
+<legend><h2>Contact information</h2></legend><table><tbody>
+		<tr id="profileform_contactdescription_container" class="html">
+		<th></th>
+	</tr>
+
+		<tr id="profileform_email_container" class="required emaillist">
+		<th><label for="profileform_email">Email Address:</label> <span class="requiredmarker"></span></th>
+<td>
+<div id="email_list">
+    <div class="email_show">
+        <label>[var.detail_result.email]</label>
+    </div>
+</div>
+    </td>
+  	</tr>
+		<tr id="profileform_town_container" class="text">
+		<th><label for="profileform_town">City:</label></th>
+		<td><label>[var.detail_result.city]</label></td>
+	</tr>
+		<tr id="profileform_city_container" class="text">
+		<th><label for="profileform_city">State/Province:</label></th>
+		<td><label>[var.detail_result.state]</label></td>
+
+	</tr>
+		<tr id="profileform_country_container" class="select">
+		<th><label for="profileform_country">Country:</label></th>
+		<td>
+                    <div class="country_show">
+                        <label>[var.detail_result.country_code]</label>
+                    </div> 
+                </td>
+	</tr>
+		<tr id="profileform_homenumber_container" class="text">
+		<th><label for="profileform_homenumber">Home Phone: (000-000-0000)</label></th>
+		<td><label>[var.detail_result.phone_home]</label></td>
+	</tr>
+		<tr id="profileform_businessnumber_container" class="text">
+
+		<th><label for="profileform_businessnumber">Business Phone:(000-000-0000)</label></th>
+		<td><label>[var.detail_result.phone_biz]</label></td>
+	</tr>
+		<tr id="profileform_mobilenumber_container" class="text">
+		<th><label for="profileform_mobilenumber">Mobile Phone: (000-000-0000)</label></th>
+		<td><label>[var.detail_result.phone_cell]</label></td>
+	</tr>
+</tbody></table></fieldset></td>
+	</tr>	<tr>
+		<td colspan="2">
+</td>
+	</tr>	
+        <tr>
+
+        </tr>	<tr id="profileform_submit_container" class="submit">
+		<th></th>
+		<td><input class="reply_or_cancel" id="tag_cancel" type='button' onclick="tb_remove();" value='Back'/></td>
+	</tr>
+</tbody></table>
+

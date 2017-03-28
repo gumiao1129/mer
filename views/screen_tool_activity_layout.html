@@ -1,0 +1,75 @@
+
+<script type="text/javascript">
+$(function() {
+    //More Button
+    $('.more').live("click",function() 
+    {
+        var ID = $(this).attr("id");
+        if(ID >= 1 )
+        {
+            $("#more"+ID).html('<img src="lib/img/moreajax.gif" />');
+
+            $.ajax({
+                type: "POST",
+                url: "ajax_more_st.php",
+                data: "last_st_activity="+ ID, 
+                cache: false,
+                success: function(html){
+            $("ol#updates").append(html);
+            $("#more"+ID).remove();
+        }
+        });
+       }
+        else
+        {
+            $(".morebox").html('No more results');
+        }
+        return false;
+    });
+});
+</script>
+
+<div class="st_activity">
+    <ol class="timeline" id="updates">
+                <ul>
+                       <li>
+                            <a href="[var.base_url]/screeningtools.php?st_req=[activity.screeningtool_name_md5]"><img class="image" src="[var.base_url]/[activity.st_icon_location;block=li]"  border ="1" alt="[activity.screeningtools]" /></a> 
+                           <div class="details">
+                                   <table border="0">
+                                         <tr>
+                                             <td >
+                                                <h4><a href="[var.base_url]/screeningtools.php?st_req=[activity.screeningtool_name_md5]">[activity.screeningtools] ([activity.screeningtool_full_name])</a></h4> 
+                                             </td>
+                                         </tr>
+                                         
+                                         <tr>
+                                             <td>
+                                                <h5>SCORE: [activity.score] </h5>
+                                             </td>
+                                               
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                <h6 style="float: left;">Date and Time:  [activity.usage_date_time]</h6>        
+                                             </td>
+                                             <td>
+                                                 <h6 style="float: right;margin-right:10px;">[activity.platform]</h6> 
+                                             </td>
+                                         </tr>
+                                         
+                                         <tr>
+                                             <td>
+                                         <!--       <h6 style="float: left;"><a href="">Click Here To See The Report</a></h6> -->
+                                             </td>
+                                         </tr>
+                                     </table>
+                             </div>
+                        </li>
+                  </ul> 
+        </ol>    
+</div>
+
+        <div id="more[var.st_activity_id]" class="morebox">
+            <a href="#" class="more" id="[var.st_activity_id]">more</a>
+        </div>
+    

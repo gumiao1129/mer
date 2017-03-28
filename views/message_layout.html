@@ -1,0 +1,183 @@
+<script type="text/javascript" src="[var.base_url]/lib/javascripts/jquery.autocomplete.js"></script>
+
+<link rel="stylesheet" type="text/css" href="[var.base_url]/lib/css/jquery.autocomplete.css" />
+
+<script type="text/javascript">  
+        $().ready(function() {
+        
+        function formatItem(row) {
+                return "<img width='35px' style='float:left;' src='" + row[1] + "'/> " + row[0];
+	}
+        
+	function formatResult(row) {}
+		
+	$("#pmTo_dr").autocomplete('search.php', {
+		width: 350,
+		multiple: true,
+		matchContains: true,
+		formatItem: formatItem,
+		formatResult: formatResult
+	});
+
+	$("#pmTo_dr").result(function(event, data, formatted) {
+                $("#pmTo_dr").val("").css("top", 2);
+                var friend = data[0],
+                span = $("<span>").text(friend),
+		a = $("<a>").addClass("remove").attr({
+		href: "javascript:",
+		title: "Remove " + friend
+		}).text("x").appendTo(span);
+  
+		//add friend to friend div
+		span.insertBefore("#pmTo_dr");        
+                
+                c=$("<input>").attr({
+                    type: "hidden",
+                    id: "newInput_"+data[3]+"_"+data[2],
+                    name: "newInput_"+data[3]+"_"+data[2],
+                    value: data[3]+"_"+data[2]
+                }).appendTo(span);
+	});
+        
+        //add click handler to friends div
+	$("#to_dr").click(function(){		
+            //focus 'to' field
+            $("#pmTo_dr").focus();
+	});
+        
+        //add live handler for clicks on remove links
+	$(".remove", document.getElementById("to_dr")).live("click", function(){		
+            //remove current friend
+            $(this).parent().remove();                                      
+            //correct 'to' field position
+            if($("#to_dr span").length === 0) {
+                $("#pmTo_dr").css("top", 0);
+            }				
+	});     
+        
+});     
+</script>
+
+<script type="text/javascript">
+$(function() {
+    //More Button
+    $('.more').live("click",function() 
+    {
+        var ID = $(this).attr("id");
+        if(ID >= 1 )
+        {
+            $("#more"+ID).html('<img src="lib/img/moreajax.gif" />');
+
+            $.ajax({
+                type: "POST",
+                url: "ajax_more_msg.php",
+                data: "last_msg_id="+ ID, 
+                cache: false,
+                success: function(html){
+            $("ol#updates").append(html);
+            $("#more"+ID).remove();
+        }
+        });
+       }
+        else
+        {
+            $(".morebox").html('No more results');
+        }
+        return false;
+    });
+});
+</script>
+
+<div class="message_container" id="private_message">    
+    <form action="messages.php" name="pmForm" id="pmForm" method="POST">
+        
+        <table border="0">
+            <tr>
+                <td colspan="2">
+                    <h2>[var.lang_sending_private_message]</h2>
+                </td>
+                <b style="color: red;" >[var.miss_message]</b>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <a href="[var.base_url]/messages.php?sendTo=pa"><h5>Send the message to patients</h5></a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    [var.lang_to_dr]
+                </td>
+                <td>
+                    <div id="to_dr" class="ui-helper-clearfix">  
+                        <input id="pmTo_dr" name="pmTo" type="text"/>
+                    </div>
+                </td>
+            </tr>          
+            <tr>
+                <td>
+                    [var.lang_subject]
+                </td>
+                <td>
+                    <input name="pmSubject" id="pmSubject" type="text"  style="width:350px;" />
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    [var.lang_message]
+                </td>
+                <td>
+                    <textarea name="pmTextArea" id="pmTextArea" rows="8" style="width:350px;"></textarea>
+                </td>
+            </tr>
+        
+            <tr>
+                <td  colspan="2">
+                    <input name="pmSubmit" type="submit" value="Submit" /> or <a href="#" onclick="return false" onmousedown="javascript:toggleInteractContainers('private_message');">[var.lang_reset]</a>
+                </td>
+            </tr>
+        </table>
+</form>
+
+     <form name="message_search" action="message_search.php" id="message_search" method="post">
+                <input type="text" class="search_field" placeholder="Search Messsages..." size="40px" name="search_key" value="[var.search_keys]" />
+                <input type="image" class="search_button" value= "Finish" width="15px" height="15px" src="[var.base_url]/lib/img/search-button.png" />
+                <input type="hidden" name="search_physicians" size="20" value="true" maxlength="12" />
+     </form>
+<!-- 
+    <div class="message_result"> 
+        <ol class="timeline" id="updates">
+            <ul>
+                <li style="background-color:[activity.level; htmlconv=no];">
+                  <a href="[activity.message_details; htmlconv=no]" class='thickbox' >
+                   <div class="details">
+                           <table>
+                               <tbody>
+                                   <tr>
+                                       <td width="350px" >
+                                           <img src="[activity.thumbnail_pic_name;block=li;headergrp=message_id;ondata=read_unread]" width="60px" height="60px" border ="1" alt="[activity.firstname;block=li;headergrp=message_id] [activity.lastname;block=li;headergrp=message_id]" />
+                                           <div id="name_subject">
+                                                 <div id="name">[activity.firstname;block=li;headergrp=message_id;ope=max:12] [activity.lastname;block=li;headergrp=message_id;ope=max:12]</div> 
+                                                 <div id ="subject">[var.lang_subject]: [activity.subject;block=li;headergrp=message_id;ope=max:24]</div>
+                                                 <div id="date_time">[activity.create_date_time;block=li;headergrp=message_id]</div>
+                                           </div>
+                                       </td>
+                                        <td>    
+                                             <div id="message">[activity.message;block=li;headergrp=message_id;ope=max:120]</div>     
+                                        </td>
+                                    </tr>
+                               </tbody>
+                           </table>
+                     </div>
+                  </a>
+                </li>
+            </ul>  
+        </ol> 
+        <div id="more[var.msg_id]" class="morebox">
+            <a href="#" class="more" id="[var.msg_id]">more</a>
+        </div>
+    </div>   
+    
+ -->       
+</div>
+

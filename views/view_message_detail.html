@@ -1,0 +1,52 @@
+<script type="text/javascript" src="[var.base_url]/lib/javascripts/jquery.min.js"></script>
+<div class="message_details">
+            <div class="image">
+                <img class="image" src="[var.profile_img]"  border ="0" alt="[activity.screeningtools]" />                
+            </div>
+            <div class="fullname">
+                <h4>[var.firstname] [var.lastname]</h4>
+            </div>
+            
+            <div>
+                <b>[var.lang_subject]</b> [var.message_subject]
+            </div>
+            <div>
+                <b>[var.lang_message]</b>
+                <br> 
+                <p>[var.message]</p>
+            </div>
+            
+            <div class="message_reply_buttons">   
+                <textarea name="replyTextArea" id="replyTextArea" rows="4" style="width:345px;"></textarea>
+                <input class="reply_or_cancel" id="send_replay" type='button' value='Replay' />
+                <input class="reply_or_cancel" id="tag_cancel" type='button' onclick="tb_remove();" value='Cancel' /> 
+                <input class="reply_or_cancel" id="message_subject" type='hidden' value="RE: [var.message_subject]" />
+                <input class="reply_or_cancel" id="message_recipient_id" type='hidden' value="[var.message_recipient_id]" />
+            </div>
+</div>
+
+<script type="text/javascript">    
+    $("#send_replay").click(function(){
+       var commentId = $(this).attr('id');
+    $(this).val('Waiting...');
+    $("#"+commentId).attr('disabled', true);
+       
+    $.post("message_replay.php",{replyTextArea:$("textarea#replyTextArea").val(),message_recipient_id:$("#message_recipient_id").attr('value'),message_subject:$("#message_subject").attr('value')},function(result){    
+      
+      if($.trim(result)=="")
+      {
+          $("#"+commentId).val('Replay Successed!');    
+          $("#"+commentId).attr('disabled', true);
+          tb_remove();
+      }
+      else
+      {  
+          alert(result);
+          $("#"+commentId).val('This request failed, Please try again later.');    
+          $("#"+commentId).attr('disabled', true);  
+      }    
+    })
+    .error(function() { $("#"+commentId).val('Error..');})
+  });
+
+</script>

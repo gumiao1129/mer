@@ -1,0 +1,23 @@
+<script type="text/javascript" src="[var.base_url]/lib/javascripts/jquery.min.js"></script>
+<div class="username_edited">
+
+    <span id="error" style="color: red" />
+    
+            <div class="username_title">
+                <h4>New Username:</h4>
+                <input id="username_title" type="text"/>
+            </div>
+            
+            <div class="password_title">
+                <h4>Please input your password to verify:</h4>
+                <input id="password_title" type="password"/>
+            </div>
+           
+            <div class="save_buttons">   
+                <input class="reply_or_cancel" id="send_replay" type='button' value='Save'/>
+                <input class="reply_or_cancel" id="tag_cancel" type='button' onclick="tb_remove();" value='Cancel'/>
+                <input class="reply_or_cancel" id="acount_usename_edited" type='hidden' value="yes"/>
+            </div>
+</div>
+
+<script type="text/javascript">$("#send_replay").click(function(){var commentId=$(this).attr('id');$(this).val('Waiting...');$("#"+commentId).attr('disabled',true);$.post("account_edited.php",{username_title:$("#username_title").val(),password_title:$("#password_title").val(),acount_usename_edited:$("#acount_usename_edited").attr('value')},function(result){if(result=="success"){$("#"+commentId).val('Replay Successed!');$("#"+commentId).attr('disabled',true);tb_remove();}else{$("#error").html(result);$("#"+commentId).val("Re-Enter");$("#"+commentId).attr('disabled',false);}}).error(function(){$("#"+commentId).val('Error..');})});</script>

@@ -1,0 +1,41 @@
+<div id ="signup">
+    <div id="error_message">
+    [var.login_error_message]
+    </div> 
+     <form name="login" action="login.php" method="post" class="FormGeneric">
+                <table cellspacing="2" border ="0" width="100%">
+                <tr>
+                    <td>
+                        <span class="signup-lable">[var.lang_user_name]:</span>
+                    </td>
+                    <td>
+                       <input type="text" name="user_name_login" size="25" />
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        <span class="signup-lable">[var.lang_password]:</span>
+                    </td>
+                    
+                    <td>
+                    <input type="password" name="password_login" size="25" />
+                    </td>
+
+                <td>   
+                <input type="submit" value="[var.lang_login_now]" class="button-form" />             
+                </td>
+                </tr>
+                <tr>
+                <td>
+                    <a rel="nofollow" href="">[var.lang_forget_password]</a>  
+                </td>
+                <td>
+                    <a rel="nofollow" href="">[var.lang_register_now]</a>  
+                </td>
+                </tr>
+                </table>
+                <input type="hidden" name="submitted" value="yes" />
+            </form>
+  
+</div>

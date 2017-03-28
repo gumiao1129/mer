@@ -1,0 +1,24 @@
+ <div id ="sideNav">   
+        <div style="text-align: center;">
+            <a href="[var.base_url]/profile.php"><img src="[var.profile_pic]" border="2" alt=[var.name]" /></a>
+         </div>   
+        
+        <div style="text-align: center;">
+                <b><a href="[var.base_url]/profile.php">[var.name]</a></b>
+        </div>
+        <div id="sideNav_manu">    
+           <ul>
+               <li class="selected" onclick="location.href='[var.base_url]/home.php'"><h4>[var.lang_home]</h4></li>
+               <li onclick="location.href='[var.base_url]/screeningtools.php'"><h4>[var.lang_screening_tools]</h4></li>
+                    <!--Begin Inner Templates Container.  This is where all of the other template files are displayed.-->
+                    <div id="inner_message_sub"><!--[onload;file=[var.inner_screeningtool_sub];getbody;comm]--></div>
+                    <!--End Inner Templates Container-->
+               <li onclick="location.href='[var.base_url]/messages.php'"><h4>[var.lang_messages]</h4></li>
+                   <!--Begin Inner Templates Container.  This is where all of the other template files are displayed.-->
+                    <div id="inner_message_sub"><!--[onload;file=[var.inner_message_sub];getbody;comm]--></div>
+                    <!--End Inner Templates Container-->
+               <li onclick="location.href='[var.base_url]/lookfor.php?search_physicians=true'"><h4>[var.lang_your_doctors]</h4></li>
+               <li onclick="location.href='[var.base_url]/lookfor.php?search_patients=true'"><h4>[var.lang_your_friends]</h4></li>
+           </ul> 
+        </div>
+    </div>

@@ -1,0 +1,16 @@
+<script type="text/javascript" src="[var.base_url]/lib/javascripts/jquery.min.js"></script>
+<div class="add_connection">
+            <h4>[var.insert_des]</h4>
+            <div class="image">
+                <img class="image" src="[var.profile_img]"  border ="1" alt="[activity.screeningtools]" />                
+            </div>
+            <div class="fullname">
+                <h4>[var.firstname] [var.lastname]</h4>
+            </div>
+            <input class="send_or_cancel" id="send_request" type='button' value='Confirm'>
+            <input class="send_or_cancel" id="tag_cancel" type='button' onclick="tb_remove();" value='Cancel'> 
+            <input class="send_or_cancel" id="add_cate" type='hidden' value=[var.add_cate]>
+            <input class="send_or_cancel" id="add_id" type='hidden' value=[var.id]>
+</div>
+
+<script type="text/javascript">$("#send_request").click(function(){var commentId=$(this).attr('id');$(this).val('Waiting...');$.post("add_Connection_confirm.php",{add_cate:$("#add_cate").attr('value'),add_id:$("#add_id").attr('value')},function(result){if(result=="confirmed"){$("#"+commentId).val('This request has confirmed');$("#"+commentId).attr('disabled',true);tb_remove();}else{alert(result);$("#"+commentId).val('This request failed,Please try again later.');$("#"+commentId).attr('disabled',true);}}).error(function(){$("#"+commentId).val('Error..');})});</script>

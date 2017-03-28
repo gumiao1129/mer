@@ -1,0 +1,66 @@
+<script type="text/javascript">
+$(function() {
+    //More Button
+    $('.more').live("click",function() 
+    {
+        var ID = $(this).attr("id");
+        if(ID >= 1 )
+        {
+            $("#more"+ID).html('<img src="lib/img/moreajax.gif" />');
+
+            $.ajax({
+                type: "POST",
+                url: "ajax_more_msg.php",
+                data: "last_patient_msg_id="+ ID, 
+                cache: false,
+                success: function(html){
+            $("ol#updates").append(html);
+            $("#more"+ID).remove();
+        }
+        });
+       }
+        else
+        {
+            $(".morebox").html('No more results');
+        }
+        return false;
+    });
+});
+</script>
+
+<div class="message_container" id="private_message"> 
+    <div class="message_result">   
+        <ol class="timeline" id="updates">
+            <ul>
+                <li style="background-color:[activity.level; htmlconv=no];">
+                  <a href="[activity.message_details; htmlconv=no]" class='thickbox' >
+                   <div class="details">
+                           <table border="0" width="760">
+                               <tbody>
+                                   <tr>
+                                       <td width="350px" >
+                                           <img src="[activity.thumbnail_pic_name;block=li;headergrp=message_id;ondata=read_unread]" width="60px" height="60px" border ="1" alt="[activity.firstname;block=li;headergrp=message_id] [activity.lastname;block=li;headergrp=message_id]" />
+                                           <div id="name_subject">
+                                                 <div id="name"><a href="">[activity.firstname;block=li;headergrp=message_id;ope=max:12] [activity.lastname;block=li;headergrp=message_id;ope=max:12]</a></div> 
+                                                 <div id ="subject">[var.lang_subject]: [activity.subject;block=li;headergrp=message_id;ope=max:24]</div>
+                                                 <div id="date_time">[activity.create_date_time;block=li;headergrp=message_id]</div>
+                                           </div>
+                                       </td>
+                                        <td>    
+                                             <div id="message">[activity.message;block=li;headergrp=message_id;ope=max:100]</div>     
+                                        </td>
+                                    </tr>
+                               </tbody>
+
+
+                           </table>
+                     </div>
+                  </a>
+                </li>
+            </ul>        
+        </ol> 
+        <div id="more[var.msg_id]" class="morebox">
+            <a href="#" class="more" id="[var.msg_id]">more</a>
+        </div>
+    </div> 
+</div>

@@ -1,0 +1,83 @@
+<form id="JqAjaxForm">
+    <div class="recommendation">
+        <div class="recommendation_list">
+            <ul>
+                <li>
+                   <table width="200px" border="0"> 
+                      <tr>
+                         <td rowspan="1" >
+                             <input type="checkbox" name="[activity_pa.patient_id]"/>
+                         </td>
+                      </tr>
+                      <tr>
+                          <td rowspan="3" >
+                             <div class="image">
+                               <img class="image" src="[var.base_url]/[activity_pa.thumbnail_pic_name;block=li;ondata=add_patients_tag]"  border ="1" alt="[activity_pa.screeningtools]" />               
+                             </div>
+                          </td>
+                      </tr> 
+                      <tr>
+                          <td width="100px" >
+                               <div class="fullname">
+                                 <h4>[activity_pa.firstname] [activity_pa.lastname]</h4>
+                               </div>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                               <div class="specialty">
+                                    Country: [activity_pa.country_code]
+                               </div>  
+                          </td>
+                      </tr>
+                   </table>
+                                 <!--[onshow.error_id;if [val]=0;then 'no error';else 'error found'] -->
+                </li>
+             </ul>
+        </div>
+            <input class="recommend_button" id="recommend" type='button' value='Recommend' />
+            <input class="recommend_button" id="tag_cancel" type='button' onclick="tb_remove();" value='Cancel' /> 
+            <input id="recommend_cate" type='hidden' name="recommend_to_target" value="b39024efbc6de61976f585c8421c6bba" />
+            <div class="form_result"> </div>
+    </div>
+</form>
+
+<script type="text/javascript"> 
+   $(document).ready(function() {
+      $('.recommendation_list table')
+        .filter(':has(:checkbox:checked)')
+        .addClass('selected')
+        .end()
+      .click(function(event) {
+        $(this).toggleClass('selected');
+        if (event.target.type !== 'checkbox') {
+          $(':checkbox', this).attr('checked', function() {
+            return !this.checked;
+          });
+        }
+      });
+      
+          
+        $("#recommend").click(function() {  
+                var commentId=$(this).attr('id');
+                $(this).val('Waiting...');
+                $(this).attr('disabled', true);
+                
+                $.ajax({type:'POST', url: 'add_recommend_insert.php', data:$('#JqAjaxForm').serialize(), success: function(response) 
+                {
+                    
+                    $('#JqAjaxForm').find('#recommend').html(response);
+                    if(response == "success")
+                    {
+                        tb_remove();
+                    }
+                    else 
+                    {
+                        $("#"+commentId).val('Please try again later.');
+                    }
+                    
+                }
+            });
+        });
+    });
+</script>

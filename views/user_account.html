@@ -1,0 +1,38 @@
+<script type="text/javascript" src="[var.base_url]/lib/javascripts/jquery.min.js"></script>
+
+<table cellspacing="0" class="account_profile"><tbody>
+
+	<tr>
+		<td colspan="2">
+<fieldset class="pieform-fieldset">
+<legend><h2>Account Information</h2></legend><table><tbody>
+	<tr id="profileform_aboutdescription_container" class="html">
+		<th><div id="profileicon"><img src="[var.result.thumbnail_pic_name]" alt=""/></div></th>
+		<td>Enter your real first and last name here. If you want to show a different name to people in the system, put that name in as your display name.</td>
+
+	</tr>
+	<tr id="profileform_firstname_container" class="required text">
+		<th><label for="profileform_firstname">Username</label> <span class="requiredmarker">*</span></th>
+		<td><div class="username_show">[var.result.username]</div></td>
+                <td>
+                    <a class="thickbox" href="account_username.php?width=350&height=200&modal=true&get_note=username">Edit</a>
+                </td>
+	</tr>
+        
+	<tr id="profileform_middlename_container" class="required text">
+		<th><label for="profileform_firstname">Password</label> <span class="requiredmarker">*</span></th>
+		<td><div class="password_show">************</div></td>
+                <td><a class="thickbox" href="account_username.php?width=350&height=200&modal=true&get_note=password">Edit</a></td>
+	</tr>
+
+</tbody></table></fieldset></td>
+
+	</tr>	
+</tbody></table>
+<input type="hidden" class="hidden" id="profileform_fs" name="fs" value="aboutme">
+<input type="hidden" class="hidden" id="profileform_sesskey" name="sesskey" value="l7yv2cAIbiteBHmM">
+<input type="hidden" name="pieform_profileform" value="">
+
+
+
+<script type="text/javascript">$("#profileform_submit").click(function(){var commentId=$(this).attr('id');$(this).val('Saving...');$("#"+commentId).attr('disabled',true);$.post("add_profile_edited.php",{firstname:$("#profileform_firstname").val(),middlename:$("#profileform_middlename").val(),lastname:$("#profileform_lastname").val(),dob_month:$("select#dob_month").val(),dob_day:$("select#dob_day").val(),dob_year:$("select#dob_year").val(),gender:$("select#gender").val(),introduction:$("#profileform_introduction").val(),email:$("#profileform_email").val(),city:$("#profileform_city").val(),state:$("#profileform_state").val(),country:$("select#profileform_country").val(),homenumber:$("#profileform_homenumber").val(),businessnumber:$("#profileform_businessnumber").val(),mobilenumber:$("#profileform_mobilenumber").val()},function(result){if(result=="good"){$("#"+commentId).val('Save Profile');$("#"+commentId).attr('disabled',false);alert("This request has sent already.");}else{$("#"+commentId).val('This request failed,Please try again later.');$("#"+commentId).attr('disabled',true);}}).error(function(){$("#"+commentId).val('Error..');})});</script>

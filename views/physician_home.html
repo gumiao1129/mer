@@ -1,0 +1,155 @@
+<div id="columns">
+
+        <ul id="column1" class="column">
+            <li class="widget color-white">  
+                <div class="widget-head">
+                    <h3><a href="[var.base_url]/screeningtools.php?st=activity">[var.lang_screening_tools]</a></h3>
+                </div>
+                <div class="widget-content">
+                    <ul>
+                        <li>
+                           <a href="[var.base_url]/screeningtools.php?st_req=[ST_info.screeningtool_name_md5]"><img src="[var.base_url]/[ST_info.st_icon_location;block=li]" width="50px" height="50px" border ="1" alt="[ST_info.screeningtools]" /></a> 
+                           <div class="details">
+                                   <table border="0" width="250">
+                                         <tr>
+                                             <td>
+                                                 <h4><a href="[var.base_url]/screeningtools.php?st_req=[ST_info.screeningtool_name_md5]">[ST_info.screeningtools;ope=max:8]</a></h4> 
+                                             </td>
+                                             <td>
+                                                 <h6>[ST_info.usage_date_time]</h6>
+                                            </td>
+                                         </tr>
+                                         <tr>
+                                             <td>
+                                                 <h5 style="float: left; font-size:10px;">SCORE: [ST_info.score;ope=max:8]</h5> 
+                                             </td>
+
+                                             <td>
+                                                 <h6>via [ST_info.platform]</h6>
+                                            </td>
+                                         </tr>
+                                     </table>
+                             </div>
+                        </li>
+                    </ul>        
+                </div>
+            </li>
+<!--
+            <li class="widget color-white">  
+                <div class="widget-head">
+                    <h3><a href="[var.base_url]/messages.php">[var.lang_messages]</a></h3>
+                </div>
+                <div class="widget-content">
+                       <ul>
+                           <li style="background-color:[activity.level; htmlconv=no];">
+                              <a href="[activity.message_details; htmlconv=no]" class='thickbox' >
+                                   <img src="[activity.thumbnail_pic_name;block=li;headergrp=message_id;ondata=read_unread]" width="60px" height="60px" border ="1" alt="[activity.firstname;block=li;headergrp=message_id] [activity.lastname;block=li;headergrp=message_id]" />
+                                   <div class="details">
+                                       <table border="0" width="250px">
+                                                 <tr>
+                                                     <td width="250px" colspan="2" >
+                                                         <h4  style="float: left; font-size:12px;"><a href="">From: [activity.firstname;block=li;headergrp=message_id;ope=max:6] [activity.lastname;block=li;headergrp=message_id;ope=max:6]</a></h4>
+                                                     </td>
+                                                  </tr>
+                                                  <tr>
+                                                     <td width="250px" colspan="2" >
+                                                         <h6  style="float: left;">[var.lang_subject]: [activity.subject;block=li;headergrp=message_id;ope=max:20]</h6>
+                                                    </td>
+                                                 </tr>
+                                                 <tr>
+                                                     <td width="50px">
+                                                         <h5  style="float: left; font-size:10px;">[var.lang_message] </h5> 
+                                                     </td>
+                                                     <td width="200px">
+                                                         <h5  style="float: left; font-size:10px;">[activity.message;block=li;headergrp=message_id;ope=max:30]</h5> 
+                                                     </td>
+                                                 </tr>
+                                             </table>
+                                     </div>
+                                   </a>
+                                </li>
+                            </ul> 
+                
+                </div>
+            </li>
+         -->   
+            
+        </ul>
+        
+        <ul id="column2" class="column">
+            <li class="widget color-white">  
+                <div class="widget-head">
+                    <h3><a href="[var.base_url]/lookfor.php?search_patients=true">[var.lang_your_patients]</a></h3>
+                </div>
+                <div class="widget-content">
+                     <ul>
+                            <li>
+                                   <a class='thickbox' href="about_info.php?height=500&width=600&modal=true&info_cate=patient&patient_info_num=[pa_info.patient_id;block=li;ondata=add_patients_tag_widget]"><img src="[var.base_url]/[pa_info.thumbnail_pic_name;block=li;ondata=add_patients_tag_widget]" width="50px" height="50px" border ="1" alt="PASQ" /></a> 
+                                   <div class="details">
+                                           <table border="0" width="260">
+                                                 <tr>
+                                                     <td width="160">
+                                                         <h4><a class='thickbox' href="about_info.php?height=500&width=600&modal=true&info_cate=patient&patient_info_num=[pa_info.patient_id;block=li;ondata=add_patients_tag_widget]">[pa_info.firstname;ope=max:8] [pa_info.lastname;ope=max:8]</a></h4> 
+                                                     </td>
+                                                     <td>
+                                                         <div class="level">[pa_info.level; htmlconv=no]</div>
+                                                    </td>
+                                                 </tr>
+                                                 <tr>
+                                                     <td>
+                                                         <h5 style="float: left; font-size:10px;">Country: [pa_info.country_code]</h5> 
+                                                     </td>
+
+                                                     <td>
+                                                         <div class="ignore_tag">
+                                                             [pa_info.level2; htmlconv=no]
+                                                         </div>
+                                                    </td>
+                                                 </tr>
+                                             </table>
+                                     </div>
+                                </li>
+                            </ul> 
+                </div>
+            </li>
+            <li class="widget color-white">  
+                <div class="widget-head">
+                    <h3><a href="[var.base_url]/lookfor.php?search_key=&search_physicians=true">[var.lang_your_friends]</a></h3>
+                </div>
+                <div class="widget-content">
+                     <ul>
+                            <li>
+                                   <a class='thickbox' href="about_info.php?height=500&width=600&modal=true&info_cate=physician&physician_info_num=[dr_info.physician_id;block=li;ondata=add_physicians_tag_widget]"><img src="[var.base_url]/[dr_info.thumbnail_pic_name;block=li;ondata=add_physicians_tag_widget]" width="50px" height="50px" border ="1" alt="PASQ" /></a> 
+                                   <div class="details">
+                                           <table border="0" width="260">
+                                                 <tr>
+                                                     <td width="160">
+                                                         <h4><a class='thickbox' href="about_info.php?height=500&width=600&modal=true&info_cate=physician&physician_info_num=[dr_info.physician_id;block=li;ondata=add_physicians_tag_widget]">[dr_info.firstname;ope=max:8] [dr_info.lastname;ope=max:8]</a></h4> 
+                                                     </td>
+                                                     <td>
+                                                         <div class="level">[dr_info.level; htmlconv=no]</div>
+                                                    </td>
+                                                 </tr>
+                                                 <tr>
+                                                     <td>
+                                                         <h5 style="float: left; font-size:10px;">Specialty: [dr_info.specialty;ope=max:14]</h5> 
+                                                     </td>
+
+                                                     <td>
+                                                         <div class="ignore_tag">
+                                                             [dr_info.level2; htmlconv=no]
+                                                         </div>
+                                                    </td>
+                                                 </tr>
+                                             </table>
+                                     </div>
+                                </li>
+                            </ul> 
+                </div>
+            </li>            
+        </ul>
+        
+    </div>
+        <script type="text/javascript" src="[var.base_url]/lib/javascripts/jquery-1.2.6.min.js"></script>
+        <script type="text/javascript" src="[var.base_url]/lib/javascripts/jquery-ui-personalized-1.6rc2.min.js"></script>
+        <script type="text/javascript" src="[var.base_url]/lib/javascripts/inettuts.js"></script>

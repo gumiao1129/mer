@@ -1,0 +1,55 @@
+<script type="text/javascript" src="[var.base_url]/lib/javascripts/jquery.min.js"></script>
+<div class="message_details">
+    <table>
+        <tr>
+            <td>
+                <div class="image">
+                    <img class="image" src="[activity.thumbnail_pic_name;block=td]"  border ="0" alt="[activity.firstname;block=td] [activity.lastname;block=td]" />                
+                </div>
+                <div class="fullname">
+                    <h4>[activity.firstname;block=td;ope=max:8] [activity.lastname;block=td;ope=max:8]</h4>
+                </div>
+            </td>
+        </tr>
+    </table>
+            <div>
+                <b>[var.lang_subject]</b> [var.message_subject]
+            </div>
+            <div>
+                <b>[var.lang_message]</b>
+                <br> 
+                <p>[var.message]</p>
+            </div>
+            
+            <div class="message_reply_buttons">   
+                <textarea name="replyTextArea" id="replyTextArea" rows="4" style="width:345px;"></textarea>
+                <input class="reply_or_cancel" id="send_resend" type='button' value='Send'>
+                <input class="reply_or_cancel" id="tag_cancel" type='button' onclick="tb_remove();" value='Cancel'> 
+                <input class="reply_or_cancel" id="message_subject" type='hidden' value="[var.message_subject]">
+                <input class="reply_or_cancel" id="message_recipient_id" type='hidden' value=[var.message_recipient_id]>
+            </div>
+</div>
+
+<script type="text/javascript">    
+    $("#send_resend").click(function(){
+       var commentId = $(this).attr('id');
+    $(this).val('Waiting...');
+    $("#"+commentId).attr('disabled', true);
+       
+    $.post("message_resend.php",{replyTextArea:$("textarea#replyTextArea").val(),message_recipient_id:$("#message_recipient_id").attr('value'),message_subject:$("#message_subject").attr('value')},function(result){    
+      if($.trim(result)=="")
+      {
+          $("#"+commentId).val('Send Successed!');    
+          $("#"+commentId).attr('disabled', true);
+          tb_remove();
+      }
+      else
+      {
+          $("#"+commentId).val('This request failed, Please try again later.');    
+          $("#"+commentId).attr('disabled', true);  
+      }    
+    })
+    .error(function() { $("#"+commentId).val('Error..');})
+  });
+
+</script>

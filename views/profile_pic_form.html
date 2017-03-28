@@ -1,0 +1,48 @@
+      <link rel="stylesheet" type="text/css" href="[var.base_url]/lib/css/imgareaselect-default.css" />	
+        <script type="text/javascript" src="[var.base_url]/lib/javascripts/jquery.min.js"></script>
+	<script type="text/javascript" src="[var.base_url]/lib/javascripts/jquery.imgareaselect.pack.js"></script>
+<script type="text/javascript">function preview(img,selection){var scaleX=100/selection.width;var scaleY=100/selection.height;$('#thumbnail+div>img').css({width:Math.round(scaleX *(img.width))+'px',height:Math.round(scaleY *(img.height))+'px',marginLeft:'-'+Math.round(scaleX * selection.x1)+'px',marginTop:'-'+Math.round(scaleY * selection.y1)+'px'});$('#x1').val(selection.x1);$('#y1').val(selection.y1);$('#x2').val(selection.x2);$('#y2').val(selection.y2);$('#w').val(selection.width);$('#h').val(selection.height);}$(document).ready(function(){$('#save_thumb').click(function(){var x1=$('#x1').val();var y1=$('#y1').val();var x2=$('#x2').val();var y2=$('#y2').val();var w=$('#w').val();var h=$('#h').val();if(x1==""||y1==""||x2==""||y2==""||w==""||h==""){alert("You must make a selection first");return false;}else{return true;}});});$(window).load(function(){var img=document.getElementById('thumbnail');var width=img.clientWidth;var height=img.clientHeight;if(width>=height){thumb_length=height;}else{thumb_length=width;}$('#thumbnail').imgAreaSelect({aspectRatio:'1:1',onSelectChange:preview,x1:0,y1:0,x2:thumb_length/2,y2:thumb_length/2,handles:true});});</script>
+
+<div id="profile_body">
+    <h1 style="padding-bottom: 30px;">[var.name]</h1>
+    
+    <div class="profile_pic">
+        <h2>Upload Profile Image</h2>
+        <h4 style="color:red"> [var.profile_image_error] </h4>
+	<form name="photo" enctype="multipart/form-data" action="[var.base_url]/editprofile.php?edit=changepic" method="post">
+	Photo 
+        <input type="file" name="image" size="30" /> 
+        <input type="hidden" name="changepic" value="yes" />
+        <input type="submit" class="button-form" value="Upload" name="upload_r" />
+	</form>
+        
+        
+        
+        
+        
+        <h2>Create Thumbnail</h2>
+		<div align="center">
+			<img src="[var.base_url]/[var.large_image_location]"  width ="[var.current_large_image_width]" 
+                             height="[var.current_large_image_height]" style="float: left; margin-right: 10px;overflow: none;" 
+                             id="thumbnail" alt="Create Thumbnail" />
+		
+			<br style="clear:both;"/>
+			<form name="thumbnail" action="[var.base_url]/editprofile.php?edit=changepic" method="post">
+				<input type="hidden" name="x1" value="" id="x1" />
+				<input type="hidden" name="y1" value="" id="y1" />
+				<input type="hidden" name="x2" value="" id="x2" />
+				<input type="hidden" name="y2" value="" id="y2" />
+				<input type="hidden" name="w" value="" id="w" />
+				<input type="hidden" name="h" value="" id="h" />
+                                <input type="hidden" name="changepic" value="yes" />
+				<input type="submit" class="button" name="upload_thumbnail" value="Save Thumbnail" id="save_thumb" />                              
+			</form>
+                        
+                        <img src="[var.base_url]/[var.thumb_image_location]" style="position: relative;" alt="Thumbnail Photo" />
+		</div>
+	
+
+    </div>
+    
+
+</div>

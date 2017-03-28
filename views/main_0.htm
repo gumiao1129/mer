@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Cache-Control" content="max-age=3600">
+
+	<title>[var.page_title;htmlconv=no;]</title>
+
+	<meta name="Description" content="[var.description;htmlconv=no;]">
+	<meta name="Keywords" content="[var.tags;htmlconv=no;]">
+
+	<base href="[var.base_url]/" />
+
+	<link href="[var.base_url]/lib/css/main.css" rel="stylesheet" type="text/css" media="all">
+        <link href="[var.base_url]/lib/css/inettuts.css" rel="stylesheet" type="text/css" media="all">
+	<!--[if lte IE 6]>
+      <link rel="stylesheet" href="[var.base_url]/lib/css/ie6.css" type="text/css">
+	<![endif]-->
+
+	<!--[if IE 7]>
+      <link rel="stylesheet" href="[var.base_url]/lib/css/ie7.css" type="text/css">
+	<![endif]-->
+        
+        <!--[if IE 8]>
+      <link rel="stylesheet" href="[var.base_url]/lib/css/ie8.css" type="text/css">
+	<![endif]-->
+
+
+</head>
+<body>
+    <!--Begin Header-->
+  <div id="header">
+    <!--Begin Inner Templates Container.  This is the login form-->
+        <div id="inner-templates-container1"><!--[onload;file=[var.inner_template1];getbody;comm]--></div>
+    <!--End Inner Templates Container-->
+        <a href="index.php"><img id="header_logo" src="[var.base_url]/lib/img/logo.png" /></a>
+  </div>
+ <!--End Header-->
+
+    <!--Begin Inner Templates Container.  This is where all of the other template files are displayed.-->
+    <div id="inner-templates-container2"><!--[onload;file=[var.inner_template2];getbody;comm]--></div>
+    <!--End Inner Templates Container-->
+    
+    <!--Begin Inner Templates Container.  This is where all of the other template files are displayed.-->
+    <div id="inner-templates-container3"><!--[onload;file=[var.inner_template3];getbody;comm]--></div>
+    <!--End Inner Templates Container-->
+
+  <!--End Wrapper-->
+  
+  <!--Begin Footer-->
+  <div id="footer">
+    <div id="footer-wrapper">
+      <p>
+        <a href="index.php">[var.lang_home]</a>
+        &nbsp;|&nbsp;
+        <a href="page.php?page=1">[var.lang_about_us]</a>
+        &nbsp;|&nbsp;
+        <a href="page.php?page=2">[var.lang_contact_us]</a>
+        &nbsp;|&nbsp;
+        <a href="page.php?page=3">[var.lang_terms]</a>
+        &nbsp;|&nbsp;
+        <a href="page.php?page=4">[var.lang_careers]</a>
+      </p>
+    </div>
+  </div>
+  <!--End Footer-->
+  
+	<!-- start of javascript -->
+        <script type="text/javascript" src="[var.base_url]/lib/javascripts/jquery-1.2.6.min.js"></script>
+        <script type="text/javascript" src="[var.base_url]/lib/javascripts/jquery-ui-personalized-1.6rc2.min.js"></script>
+        <script type="text/javascript" src="[var.base_url]/lib/javascripts/inettuts.js"></script>
+	<script type="text/javascript" src="[var.base_url]/lib/javascripts/ahah.js"></script>
+        <!-- end of javascript -->
+</body>
+</html>

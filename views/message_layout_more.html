@@ -1,0 +1,34 @@
+<script type="text/javascript" src="[var.base_url]/lib/javascripts/thickbox.js"></script>
+<style type="text/css" media="all">@import "[var.base_url]/lib/css/thickbox.css";</style>
+
+<div class="message_result">   
+            <ul>
+                <li style="background-color:[activity.level; htmlconv=no];">
+                  <a href="[activity.message_details; htmlconv=no]" class='thickbox' >
+                   <div class="details">
+                           <table>
+                               <tbody>
+                                   <tr>
+                                       <td width="350px" >
+                                           <img src="[activity.thumbnail_pic_name;block=li;headergrp=message_id;ondata=read_unread]" width="60px" height="60px" border ="1" alt="[activity.firstname;block=li;headergrp=message_id] [activity.lastname;block=li;headergrp=message_id]" />
+                                           <div id="name_subject">
+                                                 <div id="name">[activity.firstname;block=li;headergrp=message_id;ope=max:12] [activity.lastname;block=li;headergrp=message_id;ope=max:12]</div> 
+                                                 <div id ="subject">[var.lang_subject]: [activity.subject;block=li;headergrp=message_id;ope=max:24]</div>
+                                                 <div id="date_time">[activity.create_date_time;block=li;headergrp=message_id]</div>
+                                           </div>
+                                       </td>
+                                        <td>    
+                                             <div id="message">[activity.message;block=li;headergrp=message_id;ope=max:120]</div>     
+                                        </td>
+                                    </tr>
+                               </tbody>
+                           </table>
+                     </div>
+                  </a>
+                </li>
+            </ul>        
+
+        <div id="more[var.msg_id]" class="morebox">
+            <a href="#" class="more" id="[var.msg_id]">more</a>
+        </div>
+    </div>   

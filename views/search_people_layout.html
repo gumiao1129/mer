@@ -1,0 +1,14 @@
+<div id="dr_and_fri">
+    <div class ="search_tag">
+        <h3>[var.lang_find_your_doctors]</h3>
+            <form name="input" action="lookfor.php" method="GET">
+                <input type="text" class="search_field" placeholder="Search..." size="45px" name="search_key" value="[var.search_keys]" />
+                <input type="image" class="search_button" value= "Finish" width="15px" height="15px" src="[var.base_url]/lib/img/search-button.png" />
+                <input type="hidden" name="search_physicians" size="20" value="true" maxlength="12" />
+            </form>
+    </div>
+    <!--Begin Inner Templates Container.  This is where all of the other template files are displayed.-->
+    <div id="results"><!--[onload;file=[var.inner_template4];getbody;comm]--></div>
+    <!--End Inner Templates Container-->
+
+ 
