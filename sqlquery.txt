@@ -1,0 +1,27 @@
+SELECT *
+FROM physician
+LEFT JOIN physician_patient_relationships ON physician_patient_relationships.patient_id=1
+GROUP BY physician.physician_id
+ORDER BY physician.physician_id DESC
+
+SELECT *
+FROM physician, physician_patient_relationships where patient_id=1
+GROUP BY physician.physician_id
+ORDER BY physician.physician_id DESC
+
+
+SELECT physician.*, physician_patient_relationships.* 
+FROM 
+physician 
+LEFT JOIN 
+physician_patient_relationships 
+ON
+physician.physician_id = physician_patient_relationships.physician_id
+AND 
+physician_patient_relationships.patient_id =3 
+
+WHERE physician.lastname LIKE '%li%' OR physician.firstname LIKE '%li%' OR physician.email LIKE '%li%' OR physician.specialty LIKE '%li%' 
+GROUP BY
+physician.physician_id
+ORDER BY 
+physician.physician_id DESC 
